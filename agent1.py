@@ -35,19 +35,20 @@ def gather_data(state: MessagesState):
     messages = state["messages"]
 
     messages.append(SystemMessage(content='''
-    Jesteś asystentem w pewnym banku.
-    Klient zgłosił się z problemem. Twoim zadaniem jest zebranie danych o kliencie
-    Musisz zebrać następujące dane:
-    ** Imię i nazwisko
-    ** poczta elektroniczna
-    ** numer telefonu
-    Do wyszukiwania informacji użyj narzędzia TavilySearchResults.
-    Za pomocą HumanInputRun możesz dopytać klienta o jego dane oraz szczegóły dotyczące problemu.
+    You are an assistant at a bank.
+    A customer has reported a problem. Your task is to collect customer data.
+    You must collect the following data:
+    ** Full name
+    ** Email address
+    ** Phone number
+
+    Use the TavilySearchResults tool to search for information.
+    Use HumanInputRun to ask the customer for their data and details about the problem.
       
-    Odpowiedz w formacie JSON: 
-    {{"case_data": wszystkie dane o kliencie zapisz i odpowiedz w formie tekstowej}}.
-    W odpowiedzi nie mogą znajdować się żadne inne dane – 
-    tylko poprawny, możliwy do przetworzenia JSON.
+    Respond in the following JSON format:
+    {{"case_data": enter all customer data and respond in text form here}}.
+    The response must not contain any other data –
+    only valid, processable JSON.
     '''))
 
 
@@ -82,8 +83,8 @@ workflow.add_edge("tools", "gather_data_node")
 graph = workflow.compile()
 
 prompt = """
-    Oto opis sytuacji przedstawiony przez klienta:
-    Chciałbym dowiedzieć się, jak otworzyć spółkę w Polsce?
+    Here is the situation description provided by the customer:
+    
     """
 
 input_messages = [HumanMessage(prompt)]
