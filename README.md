@@ -1,3 +1,3 @@
 # Agent-AI
-My first project on GitHub
+My first project on GitHub. 
 This AI agent is designed to assist bank customers by handling support requests efficiently. This model is built using ChatGPT-4o, OpenAI’s advanced large language model It collects essential customer data such as full name, email address, and phone number, and gathers details about the reported issue. The agent uses tools like TavilySearchResults to retrieve relevant information and HumanInputRun to interact with the customer directly when additional details are needed. All collected information is returned in a structured, machine-readable JSON format to streamline case processing and resolution.
